@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Evita streaming metadata en el body (causa hydration mismatch en dev con Next.Metadata)
+  htmlLimitedBots: /.*/,
 };
 
 export default nextConfig;
