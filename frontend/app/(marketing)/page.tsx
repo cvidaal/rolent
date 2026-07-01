@@ -1,17 +1,24 @@
 "use client"; // Para que el componente sea un cliente.
 
 import { createClient } from "@/lib/supabase/client";
+import { error } from "console";
 
 export default function LandingPage() {
   const supabase = createClient();
 
   async function handleGoogleLogin() {
-    await supabase.auth.signInWithOAuth({
-      provider: "google",
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
-      },
-    });
+    await supabase.auth
+      .signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+        },
+      })
+      .then(({ error }) => {
+        if (error) {
+          console.error(error);
+        }
+      });
   }
 
   return (

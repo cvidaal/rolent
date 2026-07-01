@@ -27,11 +27,6 @@ export async function middleware(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // Si tiene sesión, lo redirigimos al dashboard
-  if (user && request.nextUrl.pathname === "/") {
-    return NextResponse.redirect(new URL("/dashboard", request.url));
-  }
-
   // Si el usuario no está autenticado y está intentando acceder a una página protegida, lo redirigimos a la página de inicio.
 
   const isPrivateRoute = ["/dashboard", "/session", "/history"].some((route) =>
@@ -56,8 +51,8 @@ export async function middleware(request: NextRequest) {
 
     const hasCompletedOnboarding = profile?.onboarding_completed === true;
 
-    // Tiene sesión esta en landing se redirige a onboarding
-    if (request.nextUrl.password === "/") {
+    // Tiene sesión y está en landing → onboarding o dashboard
+    if (request.nextUrl.pathname === "/") {
       if (!hasCompletedOnboarding) {
         return NextResponse.redirect(new URL("/onboarding", request.url));
       }
