@@ -1,5 +1,42 @@
 @import "tailwindcss";
 
+@keyframes rolent-stamp {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.rolent-stamp {
+  animation: rolent-stamp 0.45s ease-out;
+}
+
+.rolent-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.22) transparent;
+}
+
+.rolent-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rolent-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.rolent-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+}
+
 @theme {
   --color-background: #0a0a0a;
   --color-surface: #111111;

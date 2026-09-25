@@ -1,6 +1,7 @@
 "use client";
 
 import { createClient } from "@/lib/supabase/client";
+import { saveOfferDraft } from "@/lib/offer-draft";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -25,9 +26,15 @@ export default function DashboardPage() {
     router.push("/"); // Redirigimos al usuario a la página de inicio.
   }
 
+  function openSession() {
+    const text = query.trim();
+    if (text) saveOfferDraft(text);
+    router.push("/session");
+  }
+
   function handleCommand(e: React.KeyboardEvent) {
     if (e.key === "Enter" && query.trim()) {
-      router.push("/session");
+      openSession();
     }
   }
 
@@ -121,7 +128,7 @@ export default function DashboardPage() {
           {/* Quick actions */}
           <div className="p-2">
             <button
-              onClick={() => router.push("/session")}
+              onClick={openSession}
               className="w-full flex items-center gap-3 px-3 py-3 rounded-xl hover:bg-white/5 transition-colors group"
             >
               <div className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:bg-blue-500/20 transition-colors">
