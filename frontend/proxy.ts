@@ -29,7 +29,7 @@ export async function proxy(request: NextRequest) {
 
   // Si el usuario no está autenticado y está intentando acceder a una página protegida, lo redirigimos a la página de inicio.
 
-  const isPrivateRoute = ["/dashboard", "/session", "/history"].some((route) =>
+  const isPrivateRoute = ["/dashboard", "/session", "/history", "/profile"].some((route) =>
     request.nextUrl.pathname.startsWith(route),
   );
 

@@ -36,7 +36,7 @@ const variantClasses: Record<NonNullable<GoogleLoginButtonProps["variant"]>, str
   primary:
     "inline-flex items-center justify-center gap-3 px-6 py-3 rounded-xl bg-white text-[#080808] font-medium text-sm hover:bg-white/90 transition-colors shadow-lg shadow-white/5",
   blue: "inline-flex items-center justify-center gap-3 px-8 py-3.5 rounded-xl bg-blue-500 text-white font-medium text-sm hover:bg-blue-600 transition-colors shadow-lg shadow-blue-500/20",
-  ghost: "text-white/50 hover:text-white/80 text-sm transition-colors",
+  ghost: "text-white/70 hover:text-white text-sm transition-colors",
 };
 
 export function GoogleLoginButton({

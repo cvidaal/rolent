@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { LanguageProvider } from "@/lib/i18n";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,8 +16,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{document.documentElement.dataset.theme=localStorage.getItem("rolent-theme")||"dark"}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="antialiased" suppressHydrationWarning>
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );
